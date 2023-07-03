@@ -1,10 +1,8 @@
 'use strict';
-
 const express = require('express');
 const router = express.Router();
-const Food = require('../models/food.model');
-
-// Create a new food record
+const {Food} = require('../models/index');
+//// Create a new food record
 router.post('/', async (req, res) => {
   try {
     const { name, description } = req.body;
@@ -14,7 +12,6 @@ router.post('/', async (req, res) => {
     res.status(500).json({ error: 'Failed to create food record' });
   }
 });
-
 // Get all food records
 router.get('/', async (req, res) => {
   try {
@@ -24,7 +21,6 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Failed to retrieve food records' });
   }
 });
-
 // Get a single food record by ID
 router.get('/:id', async (req, res) => {
   try {
@@ -39,7 +35,6 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to retrieve food record' });
   }
 });
-
 // Update a food record by ID
 router.put('/:id', async (req, res) => {
   try {
@@ -56,7 +51,6 @@ router.put('/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to update food record' });
   }
 });
-
 // Delete a food record by ID
 router.delete('/:id', async (req, res) => {
   try {
@@ -71,5 +65,4 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to delete food record' });
   }
 });
-
 module.exports = router;
